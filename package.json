@@ -1,0 +1,44 @@
+{
+  "name": "hubot-excuse",
+  "description": "Hubot knows what your excuse is.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/LeftyBC/hubot-excuse",
+  "author": {
+    "name": "Colin Moller",
+    "email": "colin@unixarmy.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LeftyBC/hubot-excuse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LeftyBC/hubot-excuse/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/LeftyBC/hubot-excuse/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "src/scripts/hubot-excuse",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt simplemocha"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-coffeelint": "~0.0.6",
+    "grunt-simple-mocha": "~0.4.0",
+    "should": "~1.2.2",
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "hubot"
+  ]
+}
