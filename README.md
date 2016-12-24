@@ -17,7 +17,9 @@ Nothing
 
 
 ## License
+
 Copyright (c) 2013 Colin Moller
+
 Copyright (c) 2016 Gavin Mogan
 
 Licensed under the MIT license.
