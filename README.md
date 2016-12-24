@@ -7,11 +7,17 @@ Hubot knows what your excuse is.
 2. Add it `hubot-excuse` to your external-scripts.json file in your hubot directory
 
 ## Configuration
-_(Coming soon)_
+
+Nothing
 
 ## Release History
-_(Nothing yet)_
+
+* 2016-12-24 - 1.0.0
+    Initial release
+
 
 ## License
 Copyright (c) 2013 Colin Moller
+Copyright (c) 2016 Gavin Mogan
+
 Licensed under the MIT license.
