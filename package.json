@@ -48,5 +48,11 @@
   },
   "keywords": [
     "hubot"
+  ],
+  "files": [
+    "README.md",
+    "src/*",
+    "test/*",
+    "index.js"
   ]
 }
