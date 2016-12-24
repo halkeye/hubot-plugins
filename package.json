@@ -1,7 +1,7 @@
 {
   "name": "hubot-excuse",
   "description": "Hubot knows what your excuse is.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/halkeye/hubot-excuse",
   "contributors": [
     {
