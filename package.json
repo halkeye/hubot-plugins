@@ -33,7 +33,15 @@
     "test": "node -c index.js"
   },
   "dependencies": {
-    "hubot-phrases": "^1.0.1",
+    "hubot-phrases": "^1.0.2",
     "hubot-variables": "^1.0.0"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
