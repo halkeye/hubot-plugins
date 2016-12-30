@@ -33,6 +33,7 @@
     "test": "node -c index.js"
   },
   "dependencies": {
-    "hubot-phrases": "^1.0.1"
+    "hubot-phrases": "^1.0.1",
+    "hubot-variables": "^1.0.0"
   }
 }
