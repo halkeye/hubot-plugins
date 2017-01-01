@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "hubot-phrases": "=1.0.3",
-    "hubot-variables": "=1.1.0"
+    "hubot-variables": "=1.2.0"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^1.2.0"
