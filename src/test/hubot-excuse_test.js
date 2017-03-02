@@ -11,7 +11,7 @@ describe('hubot-excuse', function () {
   });
   describe('excuse', function () {
     beforeEach(function () {
-      return co(function *() {
+      return co(function * () {
         yield this.room.user.say('halkeye', 'excuse');
         yield sleep(100);
       }.bind(this));

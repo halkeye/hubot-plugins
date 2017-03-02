@@ -473,6 +473,6 @@ let quotes = [
   'OpenSSL vulnerable again'
 ];
 
-module.exports = function startBot(robot) {
+module.exports = function startBot (robot) {
   return robot.hear(/excuse/i, msg => msg.send(msg.random(quotes)));
 };
