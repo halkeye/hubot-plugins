@@ -1,7 +1,5 @@
 # hubot-excuse
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/halkeye/hubot-excuse.svg)](https://greenkeeper.io/)
-
 Hubot knows what your excuse is.
 
 ## Getting Started
