@@ -17,7 +17,7 @@ describe('hubot-excuse', function () {
       }.bind(this));
     });
     it('responds', function () {
-      this.room.messages[0].should.eql([ 'halkeye', 'excuse' ]);
+      this.room.messages[0].should.eql(['halkeye', 'excuse']);
       this.room.messages[1][0].should.eql('hubot');
       this.room.messages[1][1].should.not.be.empty();
     });

@@ -14,7 +14,7 @@
 // Lefty <colin@lefty.tv>
 // Gavin Mogan <npm@gavinmogan.com>
 
-let quotes = [
+const quotes = [
   'clock speed',
   'solar flares',
   'electromagnetic radiation from satellite debris',
