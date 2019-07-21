@@ -1,7 +1,7 @@
 {
   "name": "@halkeye/hubot-devopsreactions",
   "description": "A hubot plugin/scripts to get funny blog post from https://twitter.com/devopsreact",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "Gavin Mogan <npm@gavinmogan.com>",
   "license": "MIT",
   "homepage": "https://github.com/halkeye/hubot-devopsreactions",
