@@ -5,6 +5,9 @@
   "author": "Gavin Mogan <npm@gavinmogan.com>",
   "license": "MIT",
   "homepage": "https://github.com/halkeye/hubot-devopsreactions",
+  "scripts": {
+    "test": "mocha"
+  },
   "keywords": [
     "hubot",
     "hubot-scripts"
