@@ -1,43 +1,29 @@
 {
-  "name": "hubot-devopsreactions",
-  "description": "A hubot plugin/scripts to get funny blog post from http://devopsreactions.tumblr.com/",
+  "name": "@halkeye/hubot-devopsreactions",
+  "description": "A hubot plugin/scripts to get funny blog post from https://twitter.com/devopsreact",
   "version": "0.0.2",
-  "author": "Emmanuel Pinault <emmanuel.pinault@gmail.com",
+  "author": "Gavin Mogan <npm@gavinmogan.com>",
   "license": "MIT",
-  "homepage": "https://github.com/epinault/hubot-devopsreactions",
-
+  "homepage": "https://github.com/halkeye/hubot-devopsreactions",
   "keywords": [
     "hubot",
     "hubot-scripts"
   ],
-
-  "engines": {
-    "node": ">=0.10.15",
-    "npm": ">=1.3.5"
-  },
-  
   "repository": {
     "type": "git",
-    "url": "git://github.com/epinault/hubot-devopsreactions.git"
+    "url": "git://github.com/halkeye/hubot-devopsreactions.git"
   },
-
   "bugs": {
-    "url": "https://github.com/epinault/hubot-devopsreactions/issues"
+    "url": "https://github.com/halkeye/hubot-devopsreactions/issues"
   },
-
   "dependencies": {
-    "hubot":         ">= 2.6.0 < 3.0.0",
-    "hubot-scripts": ">= 2.5.0 < 3.0.0",
-    "coffee-script": "~1.6",
-    "cheerio": ""
+    "twitter": "^1.7.1"
   },
-
   "devDependencies": {
-    "mocha": "*",
-    "chai": "*",
-    "sinon-chai": "*",
-    "sinon": "*"
+    "hubot-test-helper": "^1.9.0",
+    "mocha": "^6.2.0",
+    "np": "^5.0.3",
+    "should": "^13.2.3"
   },
-
-  "main": "index.coffee"
+  "main": "index.js"
 }
