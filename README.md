@@ -1,35 +1,18 @@
-Devops Reactions Hubot Scripts
-==============================
+# @halkeye/hubot-devopsreaction
 
-[Hubot](http://hubot.github.com/) script to interface with the funny post from devops reactions blog
+Pulls a random tweet from the latest posts on devopsreact twitter account
 
-## Installation
+## Getting Started
 
-Update Hubot's package.json to install hubot-devopsreactions from npm, and update Hubot's external-scripts.json file to include the hubot-devopsreactions module.
+1. Install the module: `npm install --save @halkeye/hubot-devopsreaction`
+2. Add it `@halkeye/hubot-devopsreaction` to your external-scripts.json file in your hubot directory
 
-### Update the files to include the hubot-devopsreactions module:
+## Configuration
 
-#### package.json
-    ...
-    "dependencies": {
-      "hubot":        ">= 2.4.0 < 3.0.0",
-      ...
-      "hubot-devopsreactions": ">= 0.1.1"
-    },
-    ...
+Nothing
 
-#### external-scripts.json
-    ["hubot-awesome-module","other-cool-npm-script","hubot-devopsreactions"]
+## License
 
-Run `npm install` to install hubot-devopsreactions and dependencies.
+Copyright (c) 2019 Gavin Mogan
 
-## Practical Use
-
-Use `hubot help` or check the devopsreactions.coffee file to get the full list of options with short descriptions. 
-
-    devops me
-
-## TODO
-
-* Retry on error
-* Report when service is down
+Licensed under the MIT license.
