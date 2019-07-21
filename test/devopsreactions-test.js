@@ -222,7 +222,7 @@ describe('devopsreactions', function() {
     it("devops me should return one", () => {
       room.messages.should.eql([
         ["Shell", "hubot devops me"],
-        [ 'hubot', 'Calculating the power requirements for the new DC cage #devops #sysadmin https://t.co/mbDJDPu1Aw' ],
+        [ 'hubot', 'Calculating the power requirements for the new DC cage #devops #sysadmin ' ],
         [ 'hubot', 'https://video.twimg.com/tweet_video/D-fHEzwUIAAYD-Y.mp4' ]
       ])
     });

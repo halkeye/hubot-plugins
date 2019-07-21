@@ -28,17 +28,19 @@ async function findReaction() {
     throw new Error("No tweets are available")
   }
 
-  const response = [tweet.text];
+  const response = [];
   for (const media of tweet.extended_entities.media) {
     if (media.type === 'animated_gif') {
       if (!media.video_info || !media.video_info.variants) {
         throw new Error(`Animated gif has no variants: ${JSON.stringify(media)}`);
       }
       const variants = media.video_info.variants.find(v => v.content_type === "video/mp4") || media.video_info.variants[0];
+      response.push(tweet.text.substring(0, media.indices[0]) + tweet.text.substring(media.indices[1]))
       response.push(variants.url)
+      break;
     }
   }
-  if (response.length == 1) {
+  if (response.length == 0) {
     throw new Error(`Not sure how to handle: ${tweet.extended_entities.media.map(m => m.type).join(',')}`);
   }
   return response;
