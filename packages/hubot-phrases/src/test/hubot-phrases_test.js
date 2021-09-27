@@ -356,11 +356,11 @@ describe('#Commands', function () {
       });
       describe('', function () {
         it('responded at all', function () {
-          return this.room.messages.should.not.be.empty();
+          this.room.messages.should.not.be.empty();
         });
         return it('responding to "what was that"', function () {
           this.room.messages[3].should.not.be.empty();
-          return this.room.messages[3][1].should.match(new RegExp('^@halkeye That was'));
+          this.room.messages[3][1].should.match(/^@halkeye That was/);
         });
       });
     });

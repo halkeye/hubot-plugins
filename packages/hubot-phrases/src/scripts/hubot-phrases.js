@@ -189,7 +189,7 @@ module.exports = function Plugin (robot) {
       }
       msg.finish();
       robot.logger.info(`${msg.message.user.name} aliased '${srcName}' to '${targetName}'`);
-      var phrase = new Factoid(srcName);
+      const phrase = new Factoid(srcName);
       phrase.creator = msg.message.user.name;
       phrase.room = msg.message.user.room;
       phrase.alias = targetName;
