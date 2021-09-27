@@ -1,0 +1,40 @@
+{
+  "name": "@halkeye/hubot-postgres-brain",
+  "description": "Hubot brain persisted to PostgresDB as JSONB",
+  "version": "0.2.0",
+  "author": "Gavin Mogan <npm@gavinmogan.com>",
+  "license": "MIT",
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "hubot-brain",
+    "postgresql"
+  ],
+  "files": [
+    "README.md",
+    "index.js",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halkeye/hubot-postgres-brain"
+  },
+  "bugs": {
+    "url": "https://github.com/halkeye/hubot-postgres-brain/issues"
+  },
+  "dependencies": {
+    "pg": "^8.5.0",
+    "pg-connection-string": "^2.4.0"
+  },
+  "devDependencies": {
+    "hubot": "^3.3.2",
+    "mocha": "^9.0.2",
+    "np": "^7.0.0",
+    "should": "^13.2.3"
+  },
+  "main": "index.js",
+  "scripts": {
+    "release": "npm publish --access public",
+    "test": "mocha"
+  }
+}
