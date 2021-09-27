@@ -1,0 +1,50 @@
+{
+  "name": "hubot-sonarr",
+  "description": "Simple hubot script that grabs a url and outputs the title.",
+  "version": "0.1.1",
+  "homepage": "https://github.com/halkeye/hubot-sonarr",
+  "author": {
+    "name": "Gavin Mogan",
+    "email": "gavin@kodekoan.com",
+    "url": "http://www.kodekoan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/halkeye/hubot-sonarr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halkeye/hubot-sonarr/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 4"
+  },
+  "scripts": {
+    "test": "eslint . && mocha src/test"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "hubot": "^3.0.0",
+    "hubot-test-helper": "^1.9.0",
+    "mocha": "^5.0.4",
+    "nock": "^9.2.3",
+    "should": "^13.2.1",
+    "sinon": "^6.0.0",
+    "supertest": "^3.0.0"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts"
+  ],
+  "dependencies": {
+    "es6-promise": "^4.2.4",
+    "qs": "^6.5.1",
+    "request": "^2.85.0"
+  }
+}
