@@ -1,24 +1,24 @@
 // Data Store for entries
 
 class Entries {
-  constructor(robot) {
+  constructor (robot) {
     this.robot = robot;
     this.prefix = 'hubot-rss-reader:entry:';
   }
 
-  key(url) {
+  key (url) {
     return `${this.prefix}${url}`;
   }
 
-  add(url) {
+  add (url) {
     return this.robot.brain.set(this.key(url), true);
   }
 
-  remove(url) {
+  remove (url) {
     return this.robot.brain.set(this.key(url), false);
   }
 
-  include(url) {
+  include (url) {
     return this.robot.brain.get(this.key(url));
   }
 }

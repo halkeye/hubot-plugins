@@ -42,18 +42,18 @@ if (!process.env.HUBOT_RSS_LIMIT_ON_ADD) { process.env.HUBOT_RSS_LIMIT_ON_ADD = 
 
 module.exports = function (robot) {
   const logger = {
-    info(msg) {
+    info (msg) {
       if (debug.enabled) { return debug(msg); }
       // eslint-disable-next-line no-param-reassign
       if (typeof msg !== 'string') { msg = JSON.stringify(msg); }
       return robot.logger.info(`${debug.namespace}: ${msg}`);
     },
-    error(msg) {
+    error (msg) {
       if (debug.enabled) { return debug(msg); }
       // eslint-disable-next-line no-param-reassign
       if (typeof msg !== 'string') { msg = JSON.stringify(msg); }
       return robot.logger.error(`${debug.namespace}: ${msg}`);
-    },
+    }
   };
 
   const getRoom = function (msg) {

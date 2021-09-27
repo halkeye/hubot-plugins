@@ -17,7 +17,7 @@ describe('rsschecker', () => {
         'hubot rss delete #room_name',
         'hubot rss delete http://shokai.org/blog/feed',
         'hubot rss dump',
-        'hubot rss list',
+        'hubot rss list'
       ]);
     });
   });

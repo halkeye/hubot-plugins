@@ -18,18 +18,18 @@ const charsetConvertStream = require('./charset-convert-stream');
 const Entries = require('./entries');
 
 // eslint-disable-next-line no-underscore-dangle
-function __guard__(value, transform) {
+function __guard__ (value, transform) {
   return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }
 
 class RSSChecker extends events.EventEmitter {
-  constructor(robot) {
+  constructor (robot) {
     super();
     this.robot = robot;
     this.entries = new Entries(this.robot);
   }
 
-  getSummaryFromHtml(html) {
+  getSummaryFromHtml (html) {
     try {
       const $ = cheerio.load(html);
       if (process.env.HUBOT_RSS_PRINTIMAGE === 'true') {
@@ -44,7 +44,7 @@ class RSSChecker extends events.EventEmitter {
     }
   }
 
-  cleanupSummary(html = '') {
+  cleanupSummary (html = '') {
     let summary = this.getSummaryFromHtml(html);
     let lines = summary.split(/[\r\n]/);
     lines = lines.map((line) => { if (/^\s+$/.test(line)) { return ''; } return line; });
@@ -52,7 +52,7 @@ class RSSChecker extends events.EventEmitter {
     return summary.replace(/\n\n\n+/g, '\n\n');
   }
 
-  async fetch(args) {
+  async fetch (args) {
     return new Promise((resolve, reject) => {
       if (typeof args === 'string') {
         // eslint-disable-next-line no-param-reassign
@@ -67,8 +67,8 @@ class RSSChecker extends events.EventEmitter {
         timeout: 10000,
         encoding: null,
         headers: {
-          'User-Agent': process.env.HUBOT_RSS_USERAGENT,
-        },
+          'User-Agent': process.env.HUBOT_RSS_USERAGENT
+        }
       });
 
       req.on('error', (err) => reject(err));
@@ -92,9 +92,9 @@ class RSSChecker extends events.EventEmitter {
           summary: this.cleanupSummary(entities.decode(chunk.summary || chunk.description || '')),
           feed: {
             url: args.url,
-            title: entities.decode(feedparser.meta.title || ''),
+            title: entities.decode(feedparser.meta.title || '')
           },
-          toString() {
+          toString () {
             let s;
             if (process.env.HUBOT_RSS_IRCCOLORS === 'true') {
               s = `${IrcColor.pink(process.env.HUBOT_RSS_HEADER)} ${this.title} ${IrcColor.purple(`- [${this.feed.title}]`)}\n${IrcColor.lightgrey.underline(this.url)}`;
@@ -107,7 +107,7 @@ class RSSChecker extends events.EventEmitter {
             }
             return s;
           },
-          args,
+          args
         };
 
         debug(entry);
@@ -122,7 +122,7 @@ class RSSChecker extends events.EventEmitter {
     });
   }
 
-  check(opts) {
+  check (opts) {
     // eslint-disable-next-line no-param-reassign
     if (opts == null) { opts = {}; }
     return new Promise((resolve) => {
@@ -150,22 +150,22 @@ class RSSChecker extends events.EventEmitter {
     });
   }
 
-  getAllFeeds() {
+  getAllFeeds () {
     return this.robot.brain.get('feeds');
   }
 
-  getFeeds(room) {
+  getFeeds (room) {
     return __guard__(this.getAllFeeds(), (x) => x[room]) || [];
   }
 
-  setFeeds(room, urls) {
+  setFeeds (room, urls) {
     if (!(urls instanceof Array)) { return; }
     const feeds = this.robot.brain.get('feeds') || {};
     feeds[room] = urls;
     this.robot.brain.set('feeds', feeds);
   }
 
-  async addFeed(room, url) {
+  async addFeed (room, url) {
     const feeds = this.getFeeds(room);
     if (feeds.includes(url)) {
       throw new Error(`${url} is already registered`);
@@ -175,7 +175,7 @@ class RSSChecker extends events.EventEmitter {
     return `registered ${url}`;
   }
 
-  async deleteFeed(room, url) {
+  async deleteFeed (room, url) {
     const feeds = this.getFeeds(room);
     if (!feeds.includes(url)) {
       debug(`Feeds for ${room}: ${JSON.stringify(feeds)}`);
@@ -189,7 +189,7 @@ class RSSChecker extends events.EventEmitter {
     return `deleted ${url}`;
   }
 
-  async deleteRoom(name) {
+  async deleteRoom (name) {
     const rooms = this.getAllFeeds() || {};
     if (!(name in rooms)) {
       throw new Error(`room #${name} is not exists`);
@@ -200,7 +200,7 @@ class RSSChecker extends events.EventEmitter {
   }
 }
 
-module.exports = function Exported(robot) {
+module.exports = function Exported (robot) {
   // eslint-disable-next-line no-param-reassign
   return new RSSChecker(robot);
 };

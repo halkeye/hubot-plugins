@@ -56,7 +56,7 @@ describe('RSSChecker', function () {
       this.timeout(15000);
       this.rssChecker.addFeed('samplerepo', 'https://github.com/shokai.atom');
       this.rssChecker.getAllFeeds().should.be.eql({
-        samplerepo: ['https://github.com/shokai.atom'],
+        samplerepo: ['https://github.com/shokai.atom']
       });
       this.rssChecker.getFeeds('samplerepo').should.be.eql(['https://github.com/shokai.atom']);
     });
@@ -71,8 +71,8 @@ describe('RSSChecker', function () {
       await this.rssChecker.check({
         feeds: [
           'http://shokai.org/blog/feed',
-          'https://github.com/shokai.atom',
-        ],
+          'https://github.com/shokai.atom'
+        ]
       });
     });
   });
