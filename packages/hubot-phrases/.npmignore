@@ -1,0 +1,16 @@
+/node_modules/
+
+.travis*
+History.md
+grunt.coffee
+grunt.js
+
+out/
+.nyc_output/
+coverage/
+.envrc
+.npmignore
+.eslintignore
+test/
+src/test
+.eslintrc.json
