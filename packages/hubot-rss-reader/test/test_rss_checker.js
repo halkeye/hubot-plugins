@@ -3,7 +3,7 @@ const should = require('should');
 const Helper = require('hubot-test-helper');
 const nock = require('nock');
 
-const RSSChecker = require('../libs/rss-checker.js');
+const RSSChecker = require('../libs/rss-checker');
 
 const scriptHelper = new Helper('../libs/rss-checker.js');
 nock.disableNetConnect();
@@ -30,7 +30,7 @@ describe('RSSChecker', function () {
       this.timeout(5000);
 
       const allEntries = [];
-      this.rssChecker.on('new entry', entry => allEntries.push(entry));
+      this.rssChecker.on('new entry', (entry) => allEntries.push(entry));
 
       await this.rssChecker.fetch('http://shokai.org/blog/feed')
         .then((entries) => {

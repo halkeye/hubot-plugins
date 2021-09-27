@@ -1,10 +1,9 @@
-const Fs   = require('fs');
-const Path = require('path');
+const fs = require('fs');
 
-module.exports = function(robot) {
-  const path = Path.resolve(__dirname, 'src');
-  Fs.exists(path, function(exists) {
-    if (!exists) { return; }
-    Fs.readdirSync(path).map(file => robot.loadFile(path, file));
-  });
+module.exports = function (robot) {
+  const path = require('path').resolve(__dirname, 'src');
+  if (!fs.existsSync(path)) {
+    return;
+  }
+  fs.readdirSync(path).map(file => robot.loadFile(path, file));
 };

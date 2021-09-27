@@ -29,7 +29,7 @@
     "test:cov-codacy": "nyc --reporter=lcov --reporter=text mocha && cat coverage/lcov.info | codacy-coverage",
     "test:report": "nyc --reporter=lcov --reporter=text mocha",
     "test": "mocha",
-    "lint": "eslint .",
+    "lint": "eslint --ignore-path .gitignore .",
     "postversion": "git push --tags && conventional-github-releaser -p angular",
     "preversion": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
@@ -37,9 +37,12 @@
     "coffee-script": "^1.12.2",
     "conventional-changelog-cli": "^2.1.1",
     "conventional-github-releaser": "^3.1.5",
-    "eslint": "^7.13.0",
-    "eslint-config-standard": "^16.0.1",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0",
     "hubot": "~3.3.2",
     "hubot-test-helper": "^1.9.0",
@@ -58,7 +61,10 @@
     "verifyConditions": []
   },
   "mocha": {
-    "require": ["coffee-script", "should"],
+    "require": [
+      "coffee-script",
+      "should"
+    ],
     "recursive": true,
     "reporter": "spec",
     "spec": "src/test/**/*.js"

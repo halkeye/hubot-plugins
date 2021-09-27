@@ -15,8 +15,8 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    "class-methods-use-this": "off",
-    "func-names": "off",
-    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
+    'class-methods-use-this': 'off',
+    'func-names': 'off',
+    'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
   },
 };

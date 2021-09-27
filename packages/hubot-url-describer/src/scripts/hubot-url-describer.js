@@ -19,28 +19,26 @@
 
 'use strict';
 const request = require('request');
-const Url = require('url');
-const Querystring = require('querystring');
 const Path = require('path');
 const cheerio = require('cheerio');
 const unescapeHTML = require('unescape-html');
 
-let ignore_extensions = ['.png','.jpg','.jpeg','.gif','.txt','.zip','.tar.bz','.js','.css'];
+let ignoreExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.txt', '.zip', '.tar.bz', '.js', '.css'];
 if (process.env.HUBOT_HTTP_INFO_IGNORE_EXTS) {
-  ignore_extensions = process.env.HUBOT_HTTP_INFO_IGNORE_EXTS.split(',');
+  ignoreExtensions = process.env.HUBOT_HTTP_INFO_IGNORE_EXTS.split(',');
 }
-const regex = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/i;
-module.exports = function(robot) {
-  robot.hear(regex, function(msg) {
+const regex = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&amp;:/~+#]*[\w\-@?^=%&amp;/~+#])?/i;
+module.exports = function (robot) {
+  robot.hear(regex, function (msg) {
     const url = msg.match[0];
-    const urldata = Url.parse(url);
-    const path = urldata.path.split('?')[0];
+    const urldata = new URL(url);
+    const path = urldata.pathname.split('?')[0];
     const ext = Path.extname(path);
-    if (ext && (ignore_extensions.indexOf(ext) !== -1)) {
+    if (ext && (ignoreExtensions.indexOf(ext) !== -1)) {
       return;
     }
 
-    request.get(url, {}, function(err,res,body) {
+    request.get(url, {}, function (err, res, body) {
       if (err) {
         msg.send(`Error getting ${url}: ${err}`);
         return;
@@ -61,4 +59,3 @@ module.exports = function(robot) {
     });
   });
 };
-

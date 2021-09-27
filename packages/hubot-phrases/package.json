@@ -59,5 +59,13 @@
   "keywords": [
     "hubot",
     "hubot-scripts"
-  ]
+  ],
+  "mocha": {
+    "require": [
+      "should"
+    ],
+    "recursive": true,
+    "reporter": "spec",
+    "spec": "src/test/**/*.js"
+  }
 }

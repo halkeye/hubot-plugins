@@ -1,0 +1,23 @@
+{
+    "env": {
+        "node": true
+    },
+    "rules": {
+      "semi": [2, "always"],
+        "no-console": 0,
+        "eqeqeq": 2,
+          "mocha/no-exclusive-tests": "error"
+    },
+    "plugins": [
+        "standard",
+        "promise",
+        "import",
+      "mocha"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "standard",
+    ]
+}

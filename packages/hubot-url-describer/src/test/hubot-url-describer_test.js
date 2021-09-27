@@ -1,13 +1,13 @@
+/* eslint-env mocha */
 process.env.EXPRESS_PORT = (process.env.PORT = 0);
 
 const Helper = require('hubot-test-helper');
-const Url = require('url');
+const path = require('path');
 require('should');
 const nock = require('nock');
 const helper = new Helper('../scripts/hubot-url-describer.js');
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
 
 const urls = [
   [
@@ -28,7 +28,7 @@ const urls = [
   [
     'http://imgur.com/gallery/pqyzSW8',
     'imgur.html',
-    'I owe you my life - Imgur',
+    'I owe you my life - Imgur'
   ],
   // Description could be good here
   [
@@ -68,12 +68,12 @@ const urls = [
 ];
 
 // mock up the requests
-urls.forEach(function(url) {
-  const data = Url.parse(url[0]);
+urls.forEach(function (url) {
+  const data = new URL(url[0]);
   nock(data.protocol + '//' + data.hostname)
-    .defaultReplyHeaders({'Content-Type': 'text/html'})
-    .get(data.path)
-    .replyWithFile(200, __dirname + '/replies/'+ url[1]);
+    .defaultReplyHeaders({ 'Content-Type': 'text/html' })
+    .get(uri => uri.startsWith(data.pathname))
+    .replyWithFile(200, path.join(__dirname, 'replies', url[1]));
 });
 
 describe('hubot_url_describer', function () {
@@ -82,18 +82,18 @@ describe('hubot_url_describer', function () {
   afterEach(() => { room.destroy(); });
   for (const url of urls) {
     it(url[0] + ' outputs title', async () => {
-      await room.user.say('halkeye', url[0])
-      await sleep(25)
+      await room.user.say('halkeye', url[0]);
+      await sleep(25);
       if (url[2] === false) {
         room.messages.should.eql([
-          ['halkeye', url[0]],
-        ])
+          ['halkeye', url[0]]
+        ]);
       } else {
         room.messages.should.eql([
           ['halkeye', url[0]],
           ['hubot', url[2]]
-        ])
+        ]);
       }
     });
   }
-})
+});

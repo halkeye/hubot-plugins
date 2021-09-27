@@ -4,7 +4,6 @@
 // Author:
 //   @shokai
 
-
 const events = require('events');
 const request = require('request');
 const FeedParser = require('feedparser');
@@ -72,7 +71,7 @@ class RSSChecker extends events.EventEmitter {
         },
       });
 
-      req.on('error', err => reject(err));
+      req.on('error', (err) => reject(err));
 
       req.on('response', (res) => {
         if (res.statusCode !== 200) {
@@ -83,7 +82,7 @@ class RSSChecker extends events.EventEmitter {
           .pipe(feedparser);
       });
 
-      feedparser.on('error', err => reject(err));
+      feedparser.on('error', (err) => reject(err));
 
       const entries = [];
       feedparser.on('data', (chunk) => {
@@ -156,7 +155,7 @@ class RSSChecker extends events.EventEmitter {
   }
 
   getFeeds(room) {
-    return __guard__(this.getAllFeeds(), x => x[room]) || [];
+    return __guard__(this.getAllFeeds(), (x) => x[room]) || [];
   }
 
   setFeeds(room, urls) {

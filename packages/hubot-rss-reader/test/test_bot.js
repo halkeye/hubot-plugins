@@ -1,9 +1,9 @@
 /* eslint no-underscore-dangle: 0 */
 const Helper = require('hubot-test-helper');
-const should = require('should');
+require('should');
 
 const scriptHelper = new Helper('../scripts/hubot-rss-reader.js');
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 let room;
 describe('rsschecker', () => {

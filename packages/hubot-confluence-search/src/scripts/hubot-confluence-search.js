@@ -20,38 +20,43 @@
 // Author:
 //   halkeye
 
-"use strict";
-var url = require("url");
+'use strict';
 
-var username = process.env.HUBOT_CONFLUENCE_USERNAME;
-var password = process.env.HUBOT_CONFLUENCE_PASSWORD;
-var space = process.env.HUBOT_CONFLUENCE_SEARCH_SPACE;
-var host = process.env.HUBOT_CONFLUENCE_HOST;
+const username = process.env.HUBOT_CONFLUENCE_USERNAME;
+const password = process.env.HUBOT_CONFLUENCE_PASSWORD;
+const space = process.env.HUBOT_CONFLUENCE_SEARCH_SPACE;
+const host = process.env.HUBOT_CONFLUENCE_HOST;
 
-var uri = url.resolve(host, '/rest/api/content/search');
+const path = require('path');
+const Confluence = require('./confluence.js');
+
+function appendUrl (pathname) {
+  const uri = new URL(process.env.HUBOT_CONFLUENCE_HOST);
+  uri.pathname = path.join(uri.pathname, pathname);
+  return uri.toString();
+}
 
 module.exports = function (robot) {
-  robot.confluence_search = new require('./confluence.js')(username, password, host);
-  //robot.parseHelp(__filename);
+  robot.confluence_search = new Confluence(username, password, host);
+  // robot.parseHelp(__filename);
   robot.respond(/wiki\s*(.*)$/, function (res) {
-
-    var query = ''
+    let query = '';
     if (space) {
       query = 'space = "' + space + '" and ';
     }
     query = query + 'text ~ "' + res.match[1] + '"';
 
-    robot.confluence_search.simpleSearch(query).then(function(results) {
+    robot.confluence_search.simpleSearch(query).then(function (results) {
       if (results.results.length === 0) {
-        res.send( 'Nothing found' );
+        res.send('Nothing found');
         return;
       }
 
-      res.send( results.results.map(function(result) {
-          return " * " + result.title + " - " +  url.resolve(process.env.HUBOT_CONFLUENCE_HOST, result._links.tinyui);
-      }).join("\n") );
-    }).catch(function(err) {
-      console.error("Error from confluence:", err);
+      res.send(results.results.map(function (result) {
+        return ' * ' + result.title + ' - ' + appendUrl(result._links.tinyui);
+      }).join('\n'));
+    }).catch(function (err) {
+      console.error('Error from confluence:', err);
     });
   });
 };

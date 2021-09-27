@@ -16,39 +16,38 @@
 
 'use strict';
 
-const Url   = require("url");
 const BrainUtilities = require('./utils');
 
 // sets up hooks to persist the brain into redis.
-module.exports = function(robot) {
+module.exports = function (robot) {
   robot.brain.redis_hash = {};
   const client = BrainUtilities.createClient();
   const prefix = process.env.REDIS_PREFIX || 'hubot';
 
   let oldkeys = {};
-  client.on("error", err => robot.logger.error(err));
+  client.on('error', err => robot.logger.error(err));
 
-  client.on("connect", function() {
-    robot.logger.debug("Successfully connected to Redis");
+  client.on('connect', function () {
+    robot.logger.debug('Successfully connected to Redis');
 
-    return client.hgetall(`${prefix}:brain`, function(err, reply) {
+    return client.hgetall(`${prefix}:brain`, function (err, reply) {
       if (err) {
         throw err;
       } else if (reply) {
-        robot.logger.info("Brain data retrieved from redis-brain storage");
+        robot.logger.info('Brain data retrieved from redis-brain storage');
         const results = {};
         oldkeys = {};
-        for (let key of Array.from(Object.keys(reply))) {
+        for (const key of Array.from(Object.keys(reply))) {
           results[key] = JSON.parse(reply[key].toString());
           oldkeys[key] = 1;
         }
         robot.brain.mergeData(results);
       } else {
-        robot.logger.info("Initializing new redis-brain storage");
+        robot.logger.info('Initializing new redis-brain storage');
         robot.brain.mergeData({});
       }
 
-      robot.logger.info("Enabling brain auto-saving");
+      robot.logger.info('Enabling brain auto-saving');
       if (robot.brain.setAutoSave != null) {
         return robot.brain.setAutoSave(true);
       }
@@ -56,15 +55,15 @@ module.exports = function(robot) {
   });
 
   // Prevent autosaves until connect has occured
-  robot.logger.info("Disabling brain auto-saving");
+  robot.logger.info('Disabling brain auto-saving');
   if (robot.brain.setAutoSave != null) {
     robot.brain.setAutoSave(false);
   }
 
-  robot.brain.on('save', function(data) {
+  robot.brain.on('save', function (data) {
     let key;
     if (data == null) { data = {}; }
-    robot.logger.debug("Saving brain data");
+    robot.logger.debug('Saving brain data');
     const multi = (client.multi)();
     const keys = Object.keys(data);
     const jsonified = {};
@@ -85,7 +84,11 @@ module.exports = function(robot) {
       }
     }
 
-    return multi.exec(function(err,replies) {
+    multi.exec(function (err, replies) {
+      if (err) {
+        robot.logger.error(err);
+        return;
+      }
       robot.brain.emit('done:save');
     });
   });

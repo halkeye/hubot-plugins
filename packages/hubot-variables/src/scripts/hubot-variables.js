@@ -23,7 +23,7 @@
 const entries = require('object.entries');
 
 module.exports = function Export (robot) {
-  let variableRE = /(\\)?(?:\$([a-zA-Z_]\w+)|\${([a-zA-Z_]\w+)})/g;
+  const variableRE = /(\\)?(?:\$([a-zA-Z_]\w+)|\${([a-zA-Z_]\w+)})/g;
 
   class Variables {
     getAll () {
@@ -32,14 +32,15 @@ module.exports = function Export (robot) {
 
     get (varname) {
       varname = varname.toLowerCase();
-      let variable = this.getAll()[varname];
+      const variable = this.getAll()[varname];
       if (!variable) {
         throw new Error(`Sorry, I don't know of a variable '${varname}'.`);
       }
       return variable;
     }
+
     getForEdit (varname, user) {
-      let variable = robot.variables.get(varname);
+      const variable = robot.variables.get(varname);
       if (!robot.variables.canEditVar(variable, user)) {
         throw new Error(`Sorry, you don't have permissions to edit '${varname}'.`);
       }
@@ -47,13 +48,13 @@ module.exports = function Export (robot) {
     }
 
     delete (varname) {
-      let variables = this.getAll();
+      const variables = this.getAll();
       delete variables[varname];
       robot.brain.set('variables', variables);
     }
 
     update (varname, variable) {
-      let variables = this.getAll();
+      const variables = this.getAll();
       variables[varname] = variable;
       robot.brain.set('variables', variables);
     }
@@ -73,14 +74,15 @@ module.exports = function Export (robot) {
       }
       return !variable.readonly;
     }
+
     replacementFunction (word, varname, user) {
       if (varname === 'who') { return [varname, user.name]; }
       // # FIXME - pretty sure this doesn't get updated when people leave rooms, it'll have wildly out of date users
       if (varname === 'someone') {
-        let recentUsers = [];
-        let users = robot.brain.users();
-        for (let userid of Array.from(Object.keys(users))) {
-          let u = users[userid];
+        const recentUsers = [];
+        const users = robot.brain.users();
+        for (const userid of Array.from(Object.keys(users))) {
+          const u = users[userid];
           if (u.room === user.room) {
             recentUsers.push(user.name);
           }
@@ -88,7 +90,7 @@ module.exports = function Export (robot) {
         return [varname, recentUsers[Math.floor(Math.random() * recentUsers.length)]];
       }
       try {
-        let v = this.get(varname);
+        const v = this.get(varname);
         return [varname, v.values[Math.floor(Math.random() * v.values.length)]];
       } catch (e) {
         return word;
@@ -99,7 +101,7 @@ module.exports = function Export (robot) {
       return string.replace(variableRE, (word, slashes, varname, quotedVarName) => {
         // if slashes/is esacped
         if (slashes) { return word; }
-        let rv = this.replacementFunction(word, (varname || quotedVarName).toLowerCase(), user);
+        const rv = this.replacementFunction(word, (varname || quotedVarName).toLowerCase(), user);
         if (rv instanceof Array) {
           if (outputHistory) {
             if (!outputHistory.vars) { outputHistory.vars = {}; }
@@ -121,7 +123,7 @@ module.exports = function Export (robot) {
   }
 
   robot.respond(/create var (\w+)$/, function (msg) {
-    let varname = msg.match[1].toLowerCase();
+    const varname = msg.match[1].toLowerCase();
     try {
       robot.variables.get(varname);
       // if it doesn't error, it already exists
@@ -135,9 +137,9 @@ module.exports = function Export (robot) {
   });
 
   robot.respond(/remove var (\w+)\s*(!+)?$/, function (msg) {
-    let isForced = !!msg.match[2];
+    const isForced = !!msg.match[2];
     try {
-      let variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
+      const variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
       if (variable.values.length && !isForced) {
         msg.reply("This action cannot be undone. If you want to proceed append a '!'");
         return;
@@ -154,8 +156,8 @@ module.exports = function Export (robot) {
   });
 
   robot.respond(/add value (\w+) (.*)$/, function (msg) {
-    let value = msg.match[2];
-    let lcvalue = value.toLowerCase();
+    const value = msg.match[2];
+    const lcvalue = value.toLowerCase();
 
     if (value.match(variableRE)) {
       msg.reply('Sorry, no nested values please.');
@@ -163,8 +165,8 @@ module.exports = function Export (robot) {
     }
 
     try {
-      let variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
-      for (let val of Array.from(variable.values)) {
+      const variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
+      for (const val of Array.from(variable.values)) {
         if (val.toLowerCase() === lcvalue) {
           msg.reply('I had it that way!');
           return;
@@ -180,9 +182,9 @@ module.exports = function Export (robot) {
   });
 
   robot.respond(/remove value (\w+) (.*)$/, function (msg) {
-    let value = msg.match[2];
+    const value = msg.match[2];
     try {
-      let variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
+      const variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
       robot.variables.update(variable.name, Object.assign(variable, {
         values: variable.values.filter(v => v !== value)
       }));
@@ -194,7 +196,7 @@ module.exports = function Export (robot) {
 
   robot.respond(/var (\w+) type (var|verb|noun)$/, function (msg) {
     try {
-      let variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
+      const variable = robot.variables.getForEdit(msg.match[1], msg.message.user);
       robot.variables.update(variable.name, Object.assign(variable, {
         type: msg.match[2]
       }));
@@ -206,7 +208,7 @@ module.exports = function Export (robot) {
 
   robot.respond(/(un)?protect \$(\w+)$/, function (msg) {
     try {
-      let variable = robot.variables.getForEdit(msg.match[2], msg.message.user);
+      const variable = robot.variables.getForEdit(msg.match[2], msg.message.user);
       robot.variables.update(variable.name, Object.assign(variable, {
         readonly: !(msg.match[1] === 'un')
       }));
@@ -218,7 +220,7 @@ module.exports = function Export (robot) {
 
   robot.respond(/list var (\w+)$/, function (msg) {
     try {
-      let variable = robot.variables.get(msg.match[1], msg.message.user);
+      const variable = robot.variables.get(msg.match[1], msg.message.user);
       msg.reply(variable.values.join(', '));
     } catch (e) {
       msg.reply(e.message);
@@ -226,8 +228,8 @@ module.exports = function Export (robot) {
   });
 
   robot.respond(/list vars$/, function (msg) {
-    let ret = [];
-    for (let [varname, v] of entries(robot.variables.getAll())) {
+    const ret = [];
+    for (const [varname, v] of entries(robot.variables.getAll())) {
       let type = '';
       if (v.type === 'noun') {
         type = '(n)';

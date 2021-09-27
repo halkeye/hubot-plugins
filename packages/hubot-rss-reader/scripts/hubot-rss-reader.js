@@ -22,7 +22,6 @@
 // Author:
 //   @shokai
 
-
 const debug = require('debug')('hubot-rss-reader');
 
 const util = require('util');
@@ -90,7 +89,6 @@ module.exports = function (robot) {
       run();
     }
   });
-
 
   const lastStateIsError = {};
 
@@ -160,7 +158,7 @@ module.exports = function (robot) {
         checker.deleteFeed(getRoom(msg), url)
           .then(() => FindRSS(url)).then((feeds) => {
             if ((feeds != null ? feeds.length : undefined) < 1) { return; }
-            msg.send([`found some Feeds from ${url}`].concat(feeds.map(i => ` * ${i.url}`)).join('\n'));
+            msg.send([`found some Feeds from ${url}`].concat(feeds.map((i) => ` * ${i.url}`)).join('\n'));
           });
       } catch (err2) {
         msg.send(`[ERROR] ${err2}`);
@@ -169,12 +167,11 @@ module.exports = function (robot) {
     }
   });
 
-
   robot.respond(/rss\s+delete\s+(https?:\/\/[^\s]+)$/im, (msg) => {
     const url = msg.match[1].trim();
     logger.info(`delete ${url}`);
     return checker.deleteFeed(getRoom(msg), url)
-      .then(res => msg.send(res)).catch((err) => {
+      .then((res) => msg.send(res)).catch((err) => {
         msg.send(`Error: ${err.message}`);
         logger.error(err.stack);
       });
@@ -184,7 +181,7 @@ module.exports = function (robot) {
     const room = msg.match[1].trim();
     logger.info(`delete #${room}`);
     return checker.deleteRoom(room)
-      .then(res => msg.send(res)).catch((err) => {
+      .then((res) => msg.send(res)).catch((err) => {
         msg.send(err);
         logger.error(err.stack);
       });

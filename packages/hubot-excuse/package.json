@@ -31,16 +31,18 @@
     "node": ">= 5.0.0"
   },
   "scripts": {
-    "test": "eslint . && mocha"
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "mocha"
   },
   "devDependencies": {
     "co": "^4.6.0",
     "es6-sleep": "^2.0.2",
-    "eslint": "^7.13.0",
-    "eslint-config-standard": "^16.0.1",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0",
     "hubot": "^3.3.2",
     "hubot-test-helper": "^1.9.0",
