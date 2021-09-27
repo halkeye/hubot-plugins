@@ -1,0 +1,10 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "lint": "yarn workspaces foreach -p -v run lint"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
