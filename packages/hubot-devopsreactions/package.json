@@ -15,7 +15,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-devopsreactions.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-devopsreactions"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-devopsreactions/issues"

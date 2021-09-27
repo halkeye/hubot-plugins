@@ -15,7 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-excuse.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-excuse"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-excuse/issues"

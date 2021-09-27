@@ -10,7 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-brain-redis-hash.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-brain-redis-hash"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-brain-redis-hash/issues"

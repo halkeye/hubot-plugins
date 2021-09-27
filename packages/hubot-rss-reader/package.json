@@ -26,7 +26,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-rss-reader.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-rss-reader"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-rss-reader/issues"

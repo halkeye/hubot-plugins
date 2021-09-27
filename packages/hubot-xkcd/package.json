@@ -12,7 +12,11 @@
     "index.js",
     "lib"
   ],
-  "repository": "halkeye/hubot-xkcd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-xkcd"
+  },
   "keywords": [
     "xkcd",
     "hubot-scripts"

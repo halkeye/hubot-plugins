@@ -10,7 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/halkeye/hubot-variables.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-variables"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-variables/issues"

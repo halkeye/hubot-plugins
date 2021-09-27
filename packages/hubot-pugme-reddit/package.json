@@ -7,7 +7,8 @@
   "keywords": "hubot, hubot-scripts, pugs",
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-pugme-reddit.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-pugme-reddit"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-pugme-reddit/issues"

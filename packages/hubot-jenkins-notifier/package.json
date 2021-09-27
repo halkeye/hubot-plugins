@@ -11,7 +11,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-jenkins-notifier.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-jenkins-notifier"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-jenkins-notifier/issues"

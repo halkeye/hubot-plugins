@@ -10,7 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/halkeye/hubot-bucket.git"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-bucket"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-bucket/issues"

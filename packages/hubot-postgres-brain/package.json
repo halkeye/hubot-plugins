@@ -17,7 +17,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/halkeye/hubot-postgres-brain"
+    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "directory": "packages/hubot-postgres-brain"
   },
   "bugs": {
     "url": "https://github.com/halkeye/hubot-postgres-brain/issues"
