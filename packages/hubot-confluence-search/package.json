@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/halkeye/hubot-scripts.git",
+    "url": "https://github.com/halkeye/hubot-plugins.git",
     "directory": "packages/hubot-confluence-search"
   },
   "keywords": [
