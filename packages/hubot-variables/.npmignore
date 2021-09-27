@@ -1,0 +1,11 @@
+/node_modules/
+
+.travis*
+History.md
+grunt.coffee
+grunt.js
+
+out/
+.nyc_output/
+coverage/
+.envrc

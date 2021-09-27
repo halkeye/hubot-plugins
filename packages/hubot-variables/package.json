@@ -1,0 +1,66 @@
+{
+  "name": "hubot-variables",
+  "description": "Add variables support for hubot",
+  "version": "1.2.1",
+  "homepage": "https://github.com/halkeye/hubot-variables",
+  "author": {
+    "name": "Gavin Mogan",
+    "email": "npm@gavinmogan.com",
+    "url": "http://www.gavinmogan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halkeye/hubot-variables.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halkeye/hubot-variables/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/halkeye/hubot-variables/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "index",
+  "engines": {
+    "node": ">= 6"
+  },
+  "scripts": {
+    "test:cov-codacy": "nyc --reporter=lcov --reporter=text mocha && cat coverage/lcov.info | codacy-coverage",
+    "test:report": "nyc --reporter=lcov --reporter=text mocha",
+    "test": "mocha",
+    "lint": "eslint .",
+    "postversion": "git push --tags && conventional-github-releaser -p angular",
+    "preversion": "conventional-changelog -p angular -i CHANGELOG.md -s"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.12.2",
+    "conventional-changelog-cli": "^2.1.1",
+    "conventional-github-releaser": "^3.1.5",
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "hubot": "~3.3.2",
+    "hubot-test-helper": "^1.9.0",
+    "mocha": "^9.0.2",
+    "nyc": "^15.1.0",
+    "should": "~13.2.3"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts"
+  ],
+  "dependencies": {
+    "object.entries": "^1.1.2"
+  },
+  "release": {
+    "verifyConditions": []
+  },
+  "mocha": {
+    "require": ["coffee-script", "should"],
+    "recursive": true,
+    "reporter": "spec",
+    "spec": "src/test/**/*.js"
+  }
+}
