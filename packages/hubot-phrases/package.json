@@ -50,7 +50,7 @@
     "np": "6.5.0",
     "nyc": "15.1.0",
     "should": "13.2.3",
-    "supertest": "4.0.2"
+    "supertest": "6.1.6"
   },
   "keywords": [
     "hubot",
