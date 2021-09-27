@@ -1,0 +1,32 @@
+{
+  "name": "@halkeye/hubot-devopsreactions",
+  "description": "A hubot plugin/scripts to get funny blog post from https://twitter.com/devopsreact",
+  "version": "0.2.1",
+  "author": "Gavin Mogan <npm@gavinmogan.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/halkeye/hubot-devopsreactions",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/halkeye/hubot-devopsreactions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halkeye/hubot-devopsreactions/issues"
+  },
+  "dependencies": {
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "hubot-test-helper": "^1.9.0",
+    "mocha": "^9.0.2",
+    "np": "^7.0.0",
+    "should": "^13.2.3"
+  },
+  "main": "index.js"
+}
