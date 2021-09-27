@@ -1,0 +1,32 @@
+{
+  "name": "@halkeye/hubot-pugme-reddit",
+  "description": "Pugme is the most important hubot script (reddit version)",
+  "version": "0.0.1",
+  "author": "Gavin Mogan <npm@gavinmogan.com>",
+  "license": "MIT",
+  "keywords": "hubot, hubot-scripts, pugs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/halkeye/hubot-pugme-reddit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halkeye/hubot-pugme-reddit/issues"
+  },
+  "files": [
+    "README.md",
+    "index.js",
+    "src"
+  ],
+  "peerDependencies": {},
+  "devDependencies": {
+    "hubot": "3.3.2",
+    "hubot-test-helper": "^1.9.0",
+    "mocha": "^9.0.2",
+    "should": "^13.2.3"
+  },
+  "main": "index.js",
+  "scripts": {
+    "release": "npm publish --access public",
+    "test": "mocha"
+  }
+}
