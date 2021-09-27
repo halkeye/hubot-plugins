@@ -34,15 +34,10 @@
     "lint": "eslint --ignore-path .gitignore .",
     "test:cov-codacy": "nyc --reporter=lcov --reporter=text mocha test --recursive && cat coverage/lcov.info | codacy-coverage",
     "test:report": "nyc --reporter=lcov --reporter=text mocha",
-    "test": "eslint  --ignore-path .gitignore . && mocha",
-    "release": "np && git push --tags && conventional-github-releaser -p angular",
-    "postdeploy": "conventional-github-releaser -p angular"
+    "test": "mocha"
   },
   "devDependencies": {
     "co": "^4.6.0",
-    "coffee-script": "^1.12.7",
-    "conventional-changelog-cli": "^2.0.23",
-    "conventional-github-releaser": "^3.1.2",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
