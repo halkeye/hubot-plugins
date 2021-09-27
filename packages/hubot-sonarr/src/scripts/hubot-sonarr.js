@@ -20,7 +20,7 @@
 //   halkeye
 
 'use strict';
-var sonarr = require('./sonarr.js');
+const sonarr = require('./sonarr.js');
 
 /*
  * commands
@@ -37,7 +37,7 @@ module.exports = function (robot) {
   robot.hear(/^!tonightTV/i, function (res) {
     robot.sonarr.fetchFromSonarr(robot.sonarr.apiURL('calendar'))
       .then(function (body) {
-        var shows = body.map(function (show) {
+        const shows = body.map(function (show) {
           return show.series.title + ' - ' + show.title;
         });
         res.send('Upcoming shows:\n' + shows.join(',\n '));
@@ -55,8 +55,8 @@ module.exports = function (robot) {
         res.send('No results found for [' + res.match[1] + ']');
         return;
       }
-      var shows = body.map(function (show) {
-        var uuid = show.titleSlug;
+      const shows = body.map(function (show) {
+        const uuid = show.titleSlug;
         robot.brain.set('searchTV_show_' + uuid, show);
         return [
           uuid + ')',
@@ -74,11 +74,11 @@ module.exports = function (robot) {
   });
 
   robot.router.post('/hubot/sonarr/:room', function (req, res) {
-    var data = req.body;
+    const data = req.body;
 
     res.send('OK');
 
-    var rooms = [req.params.room || req.query.room];
+    const rooms = [req.params.room || req.query.room];
 
     if (data.Message) {
       rooms.forEach(function (room) {
@@ -96,10 +96,10 @@ module.exports = function (robot) {
       }
     }
     rooms.forEach(function (room) {
-      var episodeList = [];
+      let episodeList = [];
       if (data.Episodes) {
         episodeList = data.Episodes.map(function (episode) {
-          var str = 'S' + ('00' + episode.SeasonNumber).slice(-2) +
+          let str = 'S' + ('00' + episode.SeasonNumber).slice(-2) +
             'E' + ('00' + episode.EpisodeNumber).slice(-2) +
             ' - ' + episode.Title;
           if (episode.Quality) {
@@ -109,7 +109,7 @@ module.exports = function (robot) {
         });
       }
 
-      var output = 'Now ' + data.EventType + 'ing ' + data.Series.Title;
+      let output = 'Now ' + data.EventType + 'ing ' + data.Series.Title;
       if (episodeList.length) {
         output += ': ';
         output += episodeList.join(', ');

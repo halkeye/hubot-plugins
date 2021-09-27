@@ -1,13 +1,13 @@
 'use strict';
-var Path = require('path');
-var Url = require('url');
-var QS = require('qs');
-var request = require('request');
-require('es6-promise').polyfill();
+const Path = require('path');
+const QS = require('qs');
+const request = require('request');
 
 module.exports = {
   apiURL: function apiUrl (uri, params) {
-    var str = Url.resolve(process.env.HUBOT_SONARR_HTTP, Path.join('api', uri));
+    let str = new URL(process.env.HUBOT_SONARR_HTTP);
+    str.pathname = Path.join(str.pathname, 'api', uri);
+    str = str.toString();
     if (params) {
       str = str + '?' + QS.stringify(params);
     }
@@ -15,10 +15,10 @@ module.exports = {
   },
   fetchFromSonarr: function fetchFromSonarr (url) {
     return new Promise(function (resolve, reject) {
-      var options = {
+      const options = {
         url: url,
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'X-Api-Key': process.env.HUBOT_SONARR_API_KEY
         }
       };

@@ -11,11 +11,11 @@ const request = require('supertest');
 const Helper = require('hubot-test-helper');
 const helper = new Helper('../scripts/hubot-sonarr.js');
 
-var notificationPOSTJSON = {
-  'test': {'EventType': 'Test', 'Message': 'This is testing the webhook'},
-  'grab': {'EventType': 'Grab', 'Series': {'Id': 2, 'Title': 'Gravity Falls', 'Path': 'C:\\Temp\\sonarr\\Gravity Falls', 'TvdbId': 259972}, 'Episodes': [{'Id': 67, 'EpisodeNumber': 14, 'SeasonNumber': 2, 'Title': 'The Stanchurian Candidate', 'AirDate': '2015-08-24', 'AirDateUtc': '2015-08-25T01:30:00Z', 'Quality': 'WEBDL-1080p', 'QualityVersion': 1, 'ReleaseGroup': 'iT00NZ', 'SceneName': null}]},
-  'download': {'EventType': 'Download', 'Series': {'Id': 2, 'Title': 'Gravity Falls', 'Path': 'C:\\Temp\\sonarr\\Gravity Falls', 'TvdbId': 259972}, 'Episodes': [{'Id': 67, 'EpisodeNumber': 14, 'SeasonNumber': 2, 'Title': 'The Stanchurian Candidate', 'AirDate': '2015-08-24', 'AirDateUtc': '2015-08-25T01:30:00Z', 'Quality': 'HDTV-720p', 'QualityVersion': 1, 'ReleaseGroup': null, 'SceneName': null}]},
-  'rename': {'EventType': 'Rename', 'Series': {'Id': 2, 'Title': 'Gravity Falls', 'Path': 'C:\\Temp\\sonarr\\Gravity Falls', 'TvdbId': 259972}, 'Episode': null}
+const notificationPOSTJSON = {
+  test: { EventType: 'Test', Message: 'This is testing the webhook' },
+  grab: { EventType: 'Grab', Series: { Id: 2, Title: 'Gravity Falls', Path: 'C:\\Temp\\sonarr\\Gravity Falls', TvdbId: 259972 }, Episodes: [{ Id: 67, EpisodeNumber: 14, SeasonNumber: 2, Title: 'The Stanchurian Candidate', AirDate: '2015-08-24', AirDateUtc: '2015-08-25T01:30:00Z', Quality: 'WEBDL-1080p', QualityVersion: 1, ReleaseGroup: 'iT00NZ', SceneName: null }] },
+  download: { EventType: 'Download', Series: { Id: 2, Title: 'Gravity Falls', Path: 'C:\\Temp\\sonarr\\Gravity Falls', TvdbId: 259972 }, Episodes: [{ Id: 67, EpisodeNumber: 14, SeasonNumber: 2, Title: 'The Stanchurian Candidate', AirDate: '2015-08-24', AirDateUtc: '2015-08-25T01:30:00Z', Quality: 'HDTV-720p', QualityVersion: 1, ReleaseGroup: null, SceneName: null }] },
+  rename: { EventType: 'Rename', Series: { Id: 2, Title: 'Gravity Falls', Path: 'C:\\Temp\\sonarr\\Gravity Falls', TvdbId: 259972 }, Episode: null }
 };
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));

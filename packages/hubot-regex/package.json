@@ -9,7 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/leftybc/hubot-regex.git"
+    "url": "https://github.com/halkeye/hubot-plugins.git",
+    "directory": "packages/hubot-regex"
   },
   "bugs": {
     "url": "https://github.com/leftybc/hubot-regex/issues"
@@ -25,11 +26,17 @@
     "node": ">= 10"
   },
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha"
   },
   "devDependencies": {
-    "eslint": "^7.31.0",
-    "eslint-plugin-mocha": "^9.0.0",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
     "hubot-test-helper": "^1.9.0",
     "mocha": "^9.0.3",
     "should": "~13.2.3"
