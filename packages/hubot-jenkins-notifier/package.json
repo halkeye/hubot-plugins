@@ -1,0 +1,67 @@
+{
+  "name": "hubot-jenkins-notifier",
+  "description": "Notifies about Jenkins build errors via Jenkins Notification Plugin",
+  "version": "1.1.0",
+  "license": "MIT",
+  "homepage": "https://github.com/halkeye/hubot-jenkins-notifier",
+  "author": {
+    "name": "Gavin Mogan",
+    "email": "gavin@gavinmogan.com",
+    "url": "http://www.gavinmogan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/halkeye/hubot-jenkins-notifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halkeye/hubot-jenkins-notifier/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/halkeye/hubot-jenkins-notifier/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "src/scripts/hubot-jenkins-notifier",
+  "engines": {
+    "node": ">= 4"
+  },
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
+    "codacy": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
+    "coverage": "istanbul cover _mocha",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "codacy-coverage": "^3.0.0",
+    "coffee-script": "^1.12.7",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "hubot": "~3.3.2",
+    "hubot-test-helper": "^1.9.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^8.3.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "should": "~13.2.3",
+    "sinon": "~9.2.4",
+    "supertest": "~6.1.3"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "jenkins"
+  ],
+  "mocha": {
+    "require": [
+      "should"
+    ],
+    "recursive": true,
+    "reporter": "spec",
+    "spec": "src/test/**/*.js"
+  }
+}

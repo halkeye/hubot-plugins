@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- node
+after_success:
+- npm run codacy
+env:
+  global:
+    secure: Bvzj42ADc+Q+XSbb/gQ5Bcb1O2KYIPXqJbjIMBiGeHVWHQPhrFwJLwl0WBcD9DSIMYUv8D+DgS2YQ8V68k6ShZwn0SkCbvQikTe1MCFVkSH9hqLP77HkYz5cSqJg/uoXiUfnX0m4j+BR+6k4Ro45OD4e0Ud9Z1Doq+GvV82Xfys=

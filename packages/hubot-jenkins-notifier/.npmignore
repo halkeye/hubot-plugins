@@ -1,0 +1,17 @@
+/node_modules/
+
+.travis*
+History.md
+Gruntfile.coffee
+grunt.coffee
+grunt.js
+
+src/test
+
+out/
+coverage/
+test.js
+test.sh
+test/
+.envrc
+package-lock.json
