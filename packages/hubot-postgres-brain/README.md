@@ -5,12 +5,14 @@ based on the original first pass script by Dan Thompson of Github(?) https://git
 
 ## Setup
 
-` CREATE TABLE hubot (
-     id CHARACTER VARYING(1024) NOT NULL,
-     storage JSON,
-     CONSTRAINT hubot_pkey PRIMARY KEY (id)
-   )
-   INSERT INTO hubot VALUES(1, NULL)`
+````
+CREATE TABLE hubot (
+  id CHARACTER VARYING(1024) NOT NULL,
+  storage JSON,
+  CONSTRAINT hubot_pkey PRIMARY KEY (id)
+)
+INSERT INTO hubot VALUES(1, NULL)
+```
 
 ### Why Fork?
 1. In the original script, TEXT datatype was used instead of JSON. This is potentially less space efficient, there is also no JSON validation (also offered by the JSON datatype along with JSONB). JSON, along with being space efficient and JSON validating, also indexes the JSON content, however, since we're plopping the entire hubot brain into 1 attribute of 1 row, the Index is meaningless. JSON and JSONB also take the work off of the dyno/web server from having to parse and stringify the javascript objects in the brain to from json.
