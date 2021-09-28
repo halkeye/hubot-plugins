@@ -1,7 +1,5 @@
 # hubot-sonarr
 
-[![Build Status](https://travis-ci.org/halkeye/hubot-sonarr.png)](https://travis-ci.org/halkeye/hubot-sonarr)
-
 Integration with [sonarr](https://sonarr.tv/). Includes notification of downloads and some limited api integration
 
 ## Getting Started
