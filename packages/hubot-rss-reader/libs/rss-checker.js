@@ -7,9 +7,8 @@
 const events = require('events');
 const request = require('request');
 const FeedParser = require('feedparser');
-const Entities = require('html-entities').XmlEntities;
+const entities = require('html-entities');
 
-const entities = new Entities();
 const debug = require('debug')('hubot-rss-reader:rss-checker');
 const cheerio = require('cheerio');
 const IrcColor = require('irc-colors');
