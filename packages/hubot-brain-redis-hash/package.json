@@ -50,7 +50,7 @@
     "hubot-scripts"
   ],
   "dependencies": {
-    "redis": "~4.0.0"
+    "redis": "~4.6.0"
   },
   "mocha": {
     "require": [
